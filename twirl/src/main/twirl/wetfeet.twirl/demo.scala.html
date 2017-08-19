@@ -1,0 +1,31 @@
+@*
+ a simple twirl template showcasing:
+  * imports
+  * passing template parameters
+  * iterating over a data structure
+  * resolving variable values
+  * using a 'reusable code block'
+ *@
+
+@import java.util.Locale
+@import java.util.Date
+@import java.text.SimpleDateFormat
+
+@* the template parameters *@
+@(locales: Array[Locale], caption: String)
+
+@now() = @{
+  new SimpleDateFormat("dd/MM/yyyy").format(new Date).toString
+}
+
+<html>
+  <h1>@caption</h1>
+
+  <table>
+    <tr><th>lang code</th><th>country code</th><th>Language</th><th>Country</th></tr>
+    @for(l <- locales){
+    <tr><td>@l.getLanguage</td><td>@l.getCountry</td><td>@l.getDisplayLanguage</td><td>@l.getDisplayCountry</td></tr>
+    }
+  </table>
+  <p>generated: @now()</p>
+</html>

@@ -1,0 +1,10 @@
+/target
+/project/target
+/project/project/target
+/build
+/.gradle
+/.idea
+
+*.iml
+*.ipr
+*.iws
